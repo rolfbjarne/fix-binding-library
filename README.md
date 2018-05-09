@@ -3,6 +3,8 @@ Workaround for breaking change in Xamarin.iOS 11.10
 
 More information about the breaking change can be found [here](https://developer.xamarin.com/releases/ios/xamarin.ios_11/xamarin.ios_11.10/#More_information_about_3832).
 
+See also https://github.com/xamarin/xamarin-macios/issues/4065.
+
 The fix is to rebuild any binding library with a recent-ish version of
 Xamarin.iOS (any version from the last couple of years should be enough).
 
