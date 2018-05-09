@@ -1,0 +1,3 @@
+all:
+	nuget restore
+	msbuild
