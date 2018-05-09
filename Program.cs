@@ -11,6 +11,7 @@ namespace fixbindinglibrary {
 					if (!type.HasCustomAttributes)
 						continue;
 					var hasProtocolAttribute = false;
+					var hasModelAttribute = false;
 					CustomAttribute registerAttribute = null;
 					foreach (var ca in type.CustomAttributes) {
 						if (ca.AttributeType.Namespace != "Foundation")
@@ -20,15 +21,22 @@ namespace fixbindinglibrary {
 						case "ProtocolAttribute":
 							hasProtocolAttribute = true;
 							break;
+						case "ModelAttribute":
+							hasModelAttribute = true;
+							break;
 						case "RegisterAttribute":
 							registerAttribute = ca;
 							break;
 						}
 					}
-					if (!hasProtocolAttribute)
+					if (!hasProtocolAttribute || !hasModelAttribute)
 						continue;
 					if (registerAttribute == null)
 						continue;
+					if ((bool) registerAttribute.ConstructorArguments [1].Value == false) {
+						Console.WriteLine ("No need to fix {0}", type.FullName);
+						continue;
+					}
 					Console.WriteLine ("Fixing {0}", type.FullName);
 					registerAttribute.ConstructorArguments [1] = new CustomAttributeArgument (registerAttribute.ConstructorArguments [1].Type, false);
 				}
