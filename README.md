@@ -6,8 +6,9 @@ More information about the breaking change can be found [here](https://developer
 The fix is to rebuild any binding library with a recent-ish version of
 Xamarin.iOS (any version from the last couple of years should be enough).
 
-If the source code isn't available for the library, this tool can be used to
-fix it, by passing the library as a command-line argument to the tool.
+If the source code isn't available for the library (like for example the
+[CorePlot component][1]), this tool can be used to fix it, by passing the library
+as a command-line argument to the tool.
 
 1. Build the tool:
 
@@ -40,3 +41,5 @@ Fixing CorePlot.CPTTradingRangePlotDataSource
 Fixing CorePlot.CPTTradingRangePlotDelegate
 Processed /Users/rolf/Downloads/coreplot-1.5.1.2/lib/ios-unified/CorePlotiOS.dll successfully
 ```
+
+[1]: https://components.xamarin.com/gettingstarted/coreplot
