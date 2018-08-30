@@ -37,8 +37,9 @@ namespace fixbindinglibrary {
 						Console.WriteLine ("No need to fix {0}", type.FullName);
 						continue;
 					}
-					Console.WriteLine ("Fixing {0}", type.FullName);
+					registerAttribute.ConstructorArguments [0] = new CustomAttributeArgument (registerAttribute.ConstructorArguments [0].Type, ((string)registerAttribute.ConstructorArguments [0].Value) + "_ModifiedForBackwardsCompat");
 					registerAttribute.ConstructorArguments [1] = new CustomAttributeArgument (registerAttribute.ConstructorArguments [1].Type, false);
+					Console.WriteLine ("Fixed {0}: [Register (\"{1}\", {2})]", type.FullName, registerAttribute.ConstructorArguments [0].Value, registerAttribute.ConstructorArguments [1].Value);
 				}
 				ad.Write (arg);
 				Console.WriteLine ("Processed {0} successfully", arg);
